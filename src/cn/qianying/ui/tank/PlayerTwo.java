@@ -1,42 +1,39 @@
-package tank;
+package cn.qianying.ui.tank;
+
+
+import cn.qianying.business.tank.GamePanel;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
-public class PlayerOne extends Tank {
+public class PlayerTwo extends Tank {
     private boolean up = false;
     private boolean left = false;
     private boolean right = false;
     private boolean down = false;
 
-    public PlayerOne(Image img, int x, int y, Image upImage, Image downImage, Image leftImage, Image rightImage, GamePanel gamePanel){
+    public PlayerTwo(Image img, int x, int y, Image upImage, Image downImage, Image leftImage, Image rightImage, GamePanel gamePanel){
         super(img, x, y, upImage, downImage, leftImage, rightImage, gamePanel);
     }
 
     public void keyPressed(KeyEvent e){
         int key = e.getKeyCode();
         switch (key){
-            case KeyEvent.VK_A:
+            case KeyEvent.VK_LEFT:
                 left = true;
                 break;
-            case KeyEvent.VK_S:
+            case KeyEvent.VK_DOWN:
                 down = true;
                 break;
-            case KeyEvent.VK_D:
+            case KeyEvent.VK_RIGHT:
                 right = true;
                 break;
-            case KeyEvent.VK_W:
+            case KeyEvent.VK_UP:
                 up = true;
                 break;
-            case KeyEvent.VK_SPACE:
+            case KeyEvent.VK_K:
                 this.attack();
                 break;
-            case KeyEvent.VK_G: // 开挂：清除现存敌方坦克中存活最久的一个
-                Bot b = this.gamePanel.botList.remove(0);
-                gamePanel.botList.remove(b);
-                gamePanel.blastList.add(new BlastObj(b.x, b.y));
-                break;
-                //TODO g
             default:
                 break;
         }
@@ -45,16 +42,16 @@ public class PlayerOne extends Tank {
     public void keyReleased(KeyEvent e){
         int key = e.getKeyCode();
         switch (key){
-            case KeyEvent.VK_A:
+            case KeyEvent.VK_LEFT:
                 left = false;
                 break;
-            case KeyEvent.VK_S:
+            case KeyEvent.VK_DOWN:
                 down = false;
                 break;
-            case KeyEvent.VK_D:
+            case KeyEvent.VK_RIGHT:
                 right = false;
                 break;
-            case KeyEvent.VK_W:
+            case KeyEvent.VK_UP:
                 up = false;
                 break;
             default:
@@ -62,7 +59,7 @@ public class PlayerOne extends Tank {
         }
     }
 
-    public void move(){ // 根据状态前进/停止
+    public void move(){
         if(left){
             leftward();
         }
@@ -85,3 +82,4 @@ public class PlayerOne extends Tank {
         return new Rectangle(x, y, width, height);
     }
 }
+

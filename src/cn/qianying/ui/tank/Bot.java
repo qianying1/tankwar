@@ -1,32 +1,36 @@
-package tank;
+package cn.qianying.ui.tank;
+
+import cn.qianying.business.tank.GamePanel;
+
 import java.awt.*;
 import java.util.Random;
 
-public class Bot extends Tank{
+public class Bot extends Tank {
     int moveTime = 0;
+
     public Bot(Image img, int x, int y, Image upImage, Image downImage, Image leftImage, Image rightImage, GamePanel gamePanel) {
         super(img, x, y, upImage, downImage, leftImage, rightImage, gamePanel);
     }
 
-    public void go(){
+    public void go() {
         attack();
-        if(moveTime>=20) {
-            direction=randomDirection();
-            moveTime=0;
-        }else {
-            moveTime+=1;
+        if (moveTime >= 20) {
+            direction = randomDirection();
+            moveTime = 0;
+        } else {
+            moveTime += 1;
         }
         switch (direction) {
-            case UP :
+            case UP:
                 upward();
                 break;
-            case DOWN :
+            case DOWN:
                 downward();
                 break;
-            case RIGHT :
+            case RIGHT:
                 rightward();
                 break;
-            case LEFT :
+            case LEFT:
                 leftward();
                 break;
         }
@@ -36,7 +40,7 @@ public class Bot extends Tank{
     public Direction randomDirection() {
         Random r = new Random();
         int rnum = r.nextInt(4);
-        switch(rnum) {
+        switch (rnum) {
             case 0:
                 return Direction.UP;
             case 1:
@@ -52,16 +56,16 @@ public class Bot extends Tank{
     public void attack() {
         Point p = getHeadPoint();
         Random r = new Random();
-        int rnum =r.nextInt(100);
-        if(rnum<4) {
-            EnemyBullet enemyBullet = new EnemyBullet(Toolkit.getDefaultToolkit().getImage("images/bullet/bulletYellow.gif"),p.x,p.y,direction,gamePanel);
+        int rnum = r.nextInt(100);
+        if (rnum < 4) {
+            EnemyBullet enemyBullet = new EnemyBullet(Toolkit.getDefaultToolkit().getImage("images/bullet/bulletYellow.gif"), p.x, p.y, direction, gamePanel);
             this.gamePanel.bulletList.add(enemyBullet);
         }
     }
 
     @Override
     public void paintSelf(Graphics g) {
-        g.drawImage(img,x,y,null);
+        g.drawImage(img, x, y, null);
         this.go();
     }
 

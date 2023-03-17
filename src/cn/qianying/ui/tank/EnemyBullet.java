@@ -1,11 +1,13 @@
-package tank;
+package cn.qianying.ui.tank;
 
+
+import cn.qianying.business.tank.GamePanel;
 
 import java.awt.*;
 import java.util.List;
 
 public class EnemyBullet extends Bullet {
-    public EnemyBullet(Image img, int x, int y, Direction direction,GamePanel gamePanel){
+    public EnemyBullet(Image img, int x, int y, Direction direction, GamePanel gamePanel){
         super(img, x, y, direction, gamePanel);
     }
 

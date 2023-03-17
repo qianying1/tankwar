@@ -1,6 +1,8 @@
-package tank;
+package cn.qianying.ui.tank;
 
 
+
+import cn.qianying.business.tank.GamePanel;
 
 import java.awt.*;
 import java.util.List;

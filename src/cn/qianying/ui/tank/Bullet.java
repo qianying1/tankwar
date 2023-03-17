@@ -1,5 +1,7 @@
-package tank;
+package cn.qianying.ui.tank;
 
+
+import cn.qianying.business.tank.GamePanel;
 
 import java.awt.*;
 import java.util.List;
@@ -10,7 +12,7 @@ public class Bullet extends GameObject{
     private int speed = 7;
     Direction direction;
 
-    public Bullet(Image img, int x, int y, Direction direction,GamePanel gamePanel) {
+    public Bullet(Image img, int x, int y, Direction direction, GamePanel gamePanel) {
         super(img, x,  y, gamePanel);
         this.direction = direction;
     }
